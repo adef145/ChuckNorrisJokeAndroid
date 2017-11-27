@@ -1,0 +1,74 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.2"
+    defaultConfig {
+        applicationId "com.teslacode.chucknorrisjoke"
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+// for testing proguard
+if (project.hasProperty("obfuscate")) {
+    android {
+        buildTypes {
+            debug {
+                minifyEnabled true
+                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            }
+        }
+    }
+}
+
+// for release build
+if (!properties.isEmpty() && properties.getProperty("storeFile") != null) {
+    android {
+        signingConfigs {
+            config {
+                keyAlias properties.getProperty("keyAlias")
+                keyPassword properties.getProperty("keyPassword")
+                storeFile file(properties.getProperty("storeFile"))
+                storePassword properties.getProperty("storePassword")
+            }
+        }
+
+        buildTypes {
+            release {
+                signingConfig signingConfigs.config
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    // Kotlin
+    compile "org.jetbrains.kotlin:kotlin-stdlib:${kotlin_version}"
+
+    compile 'com.squareup.picasso:picasso:2.5.2'
+
+    compile 'com.teslacode.viper:viper:0.4.0'
+    compile 'com.teslacode.service:service:0.1.1'
+}
