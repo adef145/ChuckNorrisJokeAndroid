@@ -31,7 +31,7 @@ class MainPresenter(view: ViewBehavior, interactor: Interactor) : DrawerActivity
 
     override fun setCategories(categories: List<String>) {
         val finalCategories = categories.toMutableList()
-        finalCategories.add(0, "All")
+        finalCategories.add(0, "all")
         categoryAdapter.data = finalCategories
     }
 

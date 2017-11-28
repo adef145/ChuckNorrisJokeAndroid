@@ -1,5 +1,6 @@
 package com.teslacode.chucknorrisjoke.vipers.random
 
+import android.text.TextUtils
 import com.teslacode.chucknorrisjoke.R
 import com.teslacode.chucknorrisjoke.models.Joke
 import com.teslacode.chucknorrisjoke.vipers.random.RandomContract.*
@@ -19,17 +20,32 @@ class RandomPresenter(view: ViewBehavior, interactor: Interactor, router: Router
         view?.showJoke(joke)
     }
 
+    override fun setTitle(categoryJoke: String?) {
+        if (TextUtils.isEmpty(categoryJoke)) {
+            view?.setTitle(R.string.app_name)
+        } else {
+            view?.setTitle(categoryJoke)
+        }
+    }
+
+    override fun showProgress() {
+        router?.showProgress()
+    }
+
+    override fun hideProgress() {
+        router?.hideProgress()
+    }
+
+    override fun showAbout() {
+        router?.showAbout()
+    }
+
     override fun showError(message: String) {
         view?.showError(message)
     }
 
     override fun setCategory(category: String) {
         interactor?.setCategory(category)
-        if (category == "All") {
-            view?.setTitle(R.string.app_name)
-        } else {
-            view?.setTitle(category)
-        }
     }
 
     override fun onRandom() {

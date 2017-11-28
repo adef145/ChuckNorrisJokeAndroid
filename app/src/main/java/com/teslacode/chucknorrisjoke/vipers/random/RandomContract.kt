@@ -24,6 +24,8 @@ interface RandomContract {
         fun setCategory(category: String)
 
         fun onShare()
+
+        fun showAbout()
     }
 
     interface Interactor : FragmentContract.Interactor {
@@ -42,10 +44,22 @@ interface RandomContract {
         fun shareJoke(joke: Joke)
 
         fun showError(message: String)
+
+        fun setTitle(categoryJoke: String?)
+
+        fun showProgress()
+
+        fun hideProgress()
     }
 
     interface Router : Contract.Router {
 
         fun share(text: String)
+
+        fun showAbout()
+
+        fun showProgress()
+
+        fun hideProgress()
     }
 }

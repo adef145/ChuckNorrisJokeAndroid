@@ -3,6 +3,7 @@ package com.teslacode.chucknorrisjoke.vipers.random
 import android.os.Build
 import android.os.Bundle
 import android.text.Html
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import com.squareup.picasso.Picasso
@@ -21,11 +22,22 @@ class RandomFragment : ViperFragment<Presenter>(), ViewBehavior {
 
     override var layoutResId: Int = R.layout.fragment_random
 
+    override var menuResId: Int? = R.menu.menu_random
+
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         btnRandom.setOnClickListener { presenter?.onRandom() }
         btnShare.setOnClickListener { presenter?.onShare() }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        return if (item?.itemId == R.id.menu_about) {
+            presenter?.showAbout()
+            true
+        } else {
+            super.onOptionsItemSelected(item)
+        }
     }
 
     override fun showError(message: String) {

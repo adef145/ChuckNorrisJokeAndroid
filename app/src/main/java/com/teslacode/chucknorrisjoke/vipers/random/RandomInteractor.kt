@@ -13,17 +13,19 @@ import com.teslacode.viper.interactors.FragmentInteractor
 class RandomInteractor : FragmentInteractor<RandomContract.InteractorOutput>(), Interactor {
 
     companion object {
-        private val JOKE_TAG = "JOKE_TAG"
+        private val JOKE_EXTRAS = "JOKE_EXTRAS"
+        private val CATEGORY_JOKE_EXTRAS = "CATEGORY_JOKE_EXTRAS"
     }
 
-    var categoryJoke: String? = null
+    private var categoryJoke: String? = null
 
-    var joke: Joke? = null
+    private var joke: Joke? = null
 
     override fun onCreate(extras: Bundle?, savedInstanceState: Bundle?) {
         super.onCreate(extras, savedInstanceState)
 
-        joke = savedInstanceState?.getSerializable(JOKE_TAG) as Joke?
+        joke = savedInstanceState?.getSerializable(JOKE_EXTRAS) as Joke?
+        categoryJoke = savedInstanceState?.getString(CATEGORY_JOKE_EXTRAS)
     }
 
     override fun onViewCreated() {
@@ -31,22 +33,31 @@ class RandomInteractor : FragmentInteractor<RandomContract.InteractorOutput>(), 
 
         if (joke == null) {
             onRandom()
+        } else {
+            output?.showJoke(joke)
         }
+
+        output?.setTitle(categoryJoke)
     }
 
     override fun onSavedInstanceState(outState: Bundle?) {
         super.onSavedInstanceState(outState)
-        outState?.putSerializable(JOKE_TAG, joke)
+        outState?.putSerializable(JOKE_EXTRAS, joke)
+        outState?.putString(CATEGORY_JOKE_EXTRAS, categoryJoke)
     }
 
     override fun onRandom() {
         val jokeRepo = JokeRepository()
 
+        output?.showProgress()
+
         jokeRepo.random(categoryJoke).subscribe({
             joke = it
             output?.showJoke(joke)
+            output?.hideProgress()
         }, {
             output?.showError(it.toString())
+            output?.hideProgress()
         })
     }
 
@@ -56,6 +67,8 @@ class RandomInteractor : FragmentInteractor<RandomContract.InteractorOutput>(), 
         } else {
             category
         }
+
+        output?.setTitle(categoryJoke)
         onRandom()
     }
 
