@@ -10,6 +10,8 @@ import com.teslacode.viper.adapters.ViperRecyclerViewAdapter
 
 class CategoryAdapter : ViperRecyclerViewAdapter<String, CategoryViewHolder>() {
 
+    // region ViperRecyclerViewAdapter
+
     override fun createViewHolder(view: View, viewType: Int): CategoryViewHolder {
         return CategoryViewHolder(view)
     }
@@ -17,4 +19,6 @@ class CategoryAdapter : ViperRecyclerViewAdapter<String, CategoryViewHolder>() {
     override fun itemLayoutResId(viewType: Int): Int {
         return R.layout.holder_category
     }
+
+    // endregion
 }

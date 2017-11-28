@@ -12,11 +12,19 @@ import retrofit2.Retrofit
 
 class JokeRepository : Repository<JokeApi>() {
 
+    // region Repository
+
     override fun onCreateApi(retrofit: Retrofit): JokeApi? {
         return retrofit.create(JokeApi::class.java)
     }
 
+    // endregion
+
+    // region Functionality
+
     fun random(category: String? = null): Observable<Joke> {
         return observe(api!!.random(category))
     }
+
+    // endregion
 }

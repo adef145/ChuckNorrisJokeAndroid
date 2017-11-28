@@ -17,9 +17,15 @@ class RandomInteractor : ViperFragmentInteractor<RandomContract.InteractorOutput
         private val CATEGORY_JOKE_EXTRAS = "CATEGORY_JOKE_EXTRAS"
     }
 
+    // region Attributes
+
     private var categoryJoke: String? = null
 
     private var joke: Joke? = null
+
+    // endregion
+
+    // region ViperFragmentInteractor
 
     override fun onCreate(extras: Bundle?, savedInstanceState: Bundle?) {
         super.onCreate(extras, savedInstanceState)
@@ -48,6 +54,10 @@ class RandomInteractor : ViperFragmentInteractor<RandomContract.InteractorOutput
         outState?.putString(CATEGORY_JOKE_EXTRAS, categoryJoke)
     }
 
+    // endregion
+
+    // region Interactor
+
     override fun onRandom() {
         val jokeRepo = JokeRepository()
 
@@ -64,7 +74,7 @@ class RandomInteractor : ViperFragmentInteractor<RandomContract.InteractorOutput
     }
 
     override fun setCategory(category: String) {
-        categoryJoke = if (category == "All") {
+        categoryJoke = if (category == "all") {
             null
         } else {
             category
@@ -81,4 +91,6 @@ class RandomInteractor : ViperFragmentInteractor<RandomContract.InteractorOutput
 
         output?.shareJoke(joke!!)
     }
+
+    // endregion
 }

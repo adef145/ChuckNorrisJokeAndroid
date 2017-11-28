@@ -19,7 +19,13 @@ import kotlinx.android.synthetic.main.fragment_random.*
 
 class RandomFragment : ViperFragment<Presenter>(), ViewBehavior {
 
+    // region Attributes
+
     override var layoutResId: Int = R.layout.fragment_random
+
+    // endregion
+
+    // region Fragment Life Cycle
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -28,9 +34,17 @@ class RandomFragment : ViperFragment<Presenter>(), ViewBehavior {
         btnShare.setOnClickListener { presenter?.onShare() }
     }
 
+    // endregion
+
+    // region ViperFragment
+
     override fun onCreatePresenter(savedInstanceState: Bundle?): Presenter {
         return RandomPresenter(this, RandomInteractor(), RandomRouter(this))
     }
+
+    // endregion
+
+    // region ViewBehavior
 
     override fun showError(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show()
@@ -55,7 +69,13 @@ class RandomFragment : ViperFragment<Presenter>(), ViewBehavior {
         progressBar.visibility = View.GONE
     }
 
+    // endregion
+
+    // region Functionality
+
     fun setCategory(category: String) {
         presenter?.setCategory(category)
     }
+
+    // endregion
 }

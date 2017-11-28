@@ -9,9 +9,13 @@ import com.teslacode.service.builders.RetrofitBuilder
 
 class Application : android.app.Application() {
 
+    // region Application Life Cycle
+
     override fun onCreate() {
         super.onCreate()
 
         RetrofitBuilder.builder = ChuckRetrofitBuilder()
     }
+
+    // endregion
 }

@@ -12,6 +12,24 @@ import com.teslacode.viper.presenters.ViperFragmentPresenter
 
 class RandomPresenter(view: ViewBehavior, interactor: Interactor, router: Router) : ViperFragmentPresenter<ViewBehavior, Interactor, Router>(view, interactor, router), Presenter, InteractorOutput {
 
+    // region Presenter
+
+    override fun setCategory(category: String) {
+        interactor?.setCategory(category)
+    }
+
+    override fun onRandom() {
+        interactor?.onRandom()
+    }
+
+    override fun onShare() {
+        interactor?.onShare()
+    }
+
+    // endregion
+
+    // region Output
+
     override fun showJoke(joke: Joke?) {
         if (joke == null) {
             return
@@ -19,6 +37,7 @@ class RandomPresenter(view: ViewBehavior, interactor: Interactor, router: Router
 
         view?.showJoke(joke)
     }
+
 
     override fun setTitle(categoryJoke: String?) {
         if (TextUtils.isEmpty(categoryJoke)) {
@@ -40,20 +59,10 @@ class RandomPresenter(view: ViewBehavior, interactor: Interactor, router: Router
         view?.showError(message)
     }
 
-    override fun setCategory(category: String) {
-        interactor?.setCategory(category)
-    }
-
-    override fun onRandom() {
-        interactor?.onRandom()
-    }
-
-    override fun onShare() {
-        interactor?.onShare()
-    }
-
     override fun shareJoke(joke: Joke) {
         val text = joke.value + "\n\n" + joke.url
         router?.share(text)
     }
+
+    // endregion
 }

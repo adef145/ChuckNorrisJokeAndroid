@@ -11,6 +11,8 @@ import com.teslacode.viper.routers.ViperRouter
 
 class RandomRouter(fragment: Fragment) : ViperRouter(fragment), Router {
 
+    // region Router
+
     override fun share(text: String) {
         val sharingIntent = Intent(Intent.ACTION_SEND)
         sharingIntent.type = "text/plain"
@@ -18,4 +20,6 @@ class RandomRouter(fragment: Fragment) : ViperRouter(fragment), Router {
 
         startActivity(Intent.createChooser(sharingIntent, "Share via"))
     }
+
+    // endregion
 }

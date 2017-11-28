@@ -17,7 +17,13 @@ import com.teslacode.viper.activities.ViperDrawerActivity
 
 class MainActivity : ViperDrawerActivity<RandomFragment, MainContract.Presenter>(), ViewBehavior {
 
+    // region Attributes
+
     private var drawerMenu: RecyclerView? = null
+
+    // endregion
+
+    // region ViperDrawerActivity
 
     override fun onCreateFragment(savedInstanceState: Bundle?): RandomFragment? {
         return RandomFragment()
@@ -28,6 +34,14 @@ class MainActivity : ViperDrawerActivity<RandomFragment, MainContract.Presenter>
         drawerMenu = view.findViewById(R.id.drawerMenu)
     }
 
+    override fun onCreatePresenter(savedInstanceState: Bundle?): MainContract.Presenter? {
+        return MainPresenter(this, MainInteractor())
+    }
+
+    // endregion
+
+    // region View Behavior
+
     override fun setCategory(category: String) {
         fragment?.setCategory(category)
     }
@@ -37,7 +51,5 @@ class MainActivity : ViperDrawerActivity<RandomFragment, MainContract.Presenter>
         drawerMenu?.layoutManager = LinearLayoutManager(this)
     }
 
-    override fun onCreatePresenter(savedInstanceState: Bundle?): MainContract.Presenter? {
-        return MainPresenter(this, MainInteractor())
-    }
+    // endregion
 }

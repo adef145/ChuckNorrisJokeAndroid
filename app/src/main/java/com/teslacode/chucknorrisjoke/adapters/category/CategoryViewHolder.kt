@@ -12,11 +12,19 @@ import com.teslacode.viper.viewholders.ViperRecyclerViewHolder
 
 class CategoryViewHolder(itemView: View) : ViperRecyclerViewHolder<String>(itemView) {
 
+    // region Attributes
+
     private val tvCategory: TextView by bindView(R.id.tvCategory)
+
+    // endregion
+
+    // region ViperRecyclerViewHolder
 
     override fun onBind(data: String) {
         super.onBind(data)
 
         tvCategory.text = data
     }
+
+    // endregion
 }
