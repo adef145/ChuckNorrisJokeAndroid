@@ -9,13 +9,13 @@ import com.teslacode.chucknorrisjoke.R
 import com.teslacode.chucknorrisjoke.adapters.category.CategoryAdapter
 import com.teslacode.chucknorrisjoke.vipers.main.MainContract.ViewBehavior
 import com.teslacode.chucknorrisjoke.vipers.random.RandomFragment
-import com.teslacode.viper.activities.DrawerActivity
+import com.teslacode.viper.activities.ViperDrawerActivity
 
 /**
  * Created by adefruandta on 11/22/17.
  */
 
-class MainActivity : DrawerActivity<RandomFragment, MainContract.Presenter>(), ViewBehavior {
+class MainActivity : ViperDrawerActivity<RandomFragment, MainContract.Presenter>(), ViewBehavior {
 
     private var drawerMenu: RecyclerView? = null
 

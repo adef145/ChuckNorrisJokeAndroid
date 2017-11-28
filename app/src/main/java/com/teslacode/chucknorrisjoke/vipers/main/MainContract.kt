@@ -1,7 +1,7 @@
 package com.teslacode.chucknorrisjoke.vipers.main
 
 import com.teslacode.chucknorrisjoke.adapters.category.CategoryAdapter
-import com.teslacode.viper.contracts.DrawerActivityContract
+import com.teslacode.viper.contracts.ViperDrawerActivityContract
 
 /**
  * Created by adefruandta on 11/22/17.
@@ -9,18 +9,18 @@ import com.teslacode.viper.contracts.DrawerActivityContract
 
 interface MainContract {
 
-    interface ViewBehavior : DrawerActivityContract.ViewBehavior {
+    interface ViewBehavior : ViperDrawerActivityContract.ViewBehavior {
 
         fun setAdapter(categoryAdapter: CategoryAdapter)
 
         fun setCategory(category: String)
     }
 
-    interface Presenter : DrawerActivityContract.Presenter
+    interface Presenter : ViperDrawerActivityContract.Presenter
 
-    interface Interactor : DrawerActivityContract.Interactor
+    interface Interactor : ViperDrawerActivityContract.Interactor
 
-    interface InteractorOutput : DrawerActivityContract.InteractorOutput {
+    interface InteractorOutput : ViperDrawerActivityContract.InteractorOutput {
 
         fun setCategories(categories: List<String>)
     }

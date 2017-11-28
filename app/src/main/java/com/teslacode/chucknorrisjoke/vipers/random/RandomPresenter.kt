@@ -4,13 +4,13 @@ import android.text.TextUtils
 import com.teslacode.chucknorrisjoke.R
 import com.teslacode.chucknorrisjoke.models.Joke
 import com.teslacode.chucknorrisjoke.vipers.random.RandomContract.*
-import com.teslacode.viper.presenters.FragmentPresenter
+import com.teslacode.viper.presenters.ViperFragmentPresenter
 
 /**
  * Created by adefruandta on 11/14/17.
  */
 
-class RandomPresenter(view: ViewBehavior, interactor: Interactor, router: Router) : FragmentPresenter<ViewBehavior, Interactor, Router>(view, interactor, router), Presenter, InteractorOutput {
+class RandomPresenter(view: ViewBehavior, interactor: Interactor, router: Router) : ViperFragmentPresenter<ViewBehavior, Interactor, Router>(view, interactor, router), Presenter, InteractorOutput {
 
     override fun showJoke(joke: Joke?) {
         if (joke == null) {

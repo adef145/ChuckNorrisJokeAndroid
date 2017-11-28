@@ -4,14 +4,14 @@ import android.os.Bundle
 import com.teslacode.chucknorrisjoke.services.repositories.CategoryRepository
 import com.teslacode.chucknorrisjoke.vipers.main.MainContract.Interactor
 import com.teslacode.chucknorrisjoke.vipers.main.MainContract.InteractorOutput
-import com.teslacode.viper.interactors.DrawerActivityInteractor
+import com.teslacode.viper.interactors.ViperDrawerActivityInteractor
 import java.util.*
 
 /**
  * Created by adefruandta on 11/22/17.
  */
 
-class MainInteractor : DrawerActivityInteractor<InteractorOutput>(), Interactor {
+class MainInteractor : ViperDrawerActivityInteractor<InteractorOutput>(), Interactor {
 
     companion object {
         val CATEGORIES_EXTRAS = "CATEGORIES_EXTRAS"

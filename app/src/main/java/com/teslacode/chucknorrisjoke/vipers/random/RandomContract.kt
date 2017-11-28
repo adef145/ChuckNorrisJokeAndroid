@@ -1,8 +1,8 @@
 package com.teslacode.chucknorrisjoke.vipers.random
 
 import com.teslacode.chucknorrisjoke.models.Joke
-import com.teslacode.viper.contracts.Contract
-import com.teslacode.viper.contracts.FragmentContract
+import com.teslacode.viper.contracts.ViperContract
+import com.teslacode.viper.contracts.ViperFragmentContract
 
 /**
  * Created by adefruandta on 11/14/17.
@@ -10,7 +10,7 @@ import com.teslacode.viper.contracts.FragmentContract
 
 interface RandomContract {
 
-    interface ViewBehavior : FragmentContract.ViewBehavior {
+    interface ViewBehavior : ViperFragmentContract.ViewBehavior {
 
         fun showJoke(joke: Joke)
 
@@ -21,7 +21,7 @@ interface RandomContract {
         fun hideProgress()
     }
 
-    interface Presenter : FragmentContract.Presenter {
+    interface Presenter : ViperFragmentContract.Presenter {
 
         fun onRandom()
 
@@ -30,7 +30,7 @@ interface RandomContract {
         fun onShare()
     }
 
-    interface Interactor : FragmentContract.Interactor {
+    interface Interactor : ViperFragmentContract.Interactor {
 
         fun onRandom()
 
@@ -39,7 +39,7 @@ interface RandomContract {
         fun onShare()
     }
 
-    interface InteractorOutput : FragmentContract.InteractorOutput {
+    interface InteractorOutput : ViperFragmentContract.InteractorOutput {
 
         fun showJoke(joke: Joke?)
 
@@ -54,7 +54,7 @@ interface RandomContract {
         fun hideProgress()
     }
 
-    interface Router : Contract.Router {
+    interface Router : ViperContract.Router {
 
         fun share(text: String)
     }

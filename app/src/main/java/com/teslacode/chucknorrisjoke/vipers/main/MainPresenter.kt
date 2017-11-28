@@ -3,14 +3,14 @@ package com.teslacode.chucknorrisjoke.vipers.main
 import android.os.Bundle
 import com.teslacode.chucknorrisjoke.adapters.category.CategoryAdapter
 import com.teslacode.chucknorrisjoke.vipers.main.MainContract.*
-import com.teslacode.viper.contracts.Contract
-import com.teslacode.viper.presenters.DrawerActivityPresenter
+import com.teslacode.viper.contracts.ViperContract
+import com.teslacode.viper.presenters.ViperDrawerActivityPresenter
 
 /**
  * Created by adefruandta on 11/22/17.
  */
 
-class MainPresenter(view: ViewBehavior, interactor: Interactor) : DrawerActivityPresenter<ViewBehavior, Interactor, Contract.Router>(view, interactor), Presenter, InteractorOutput {
+class MainPresenter(view: ViewBehavior, interactor: Interactor) : ViperDrawerActivityPresenter<ViewBehavior, Interactor, ViperContract.Router>(view, interactor), Presenter, InteractorOutput {
 
     private val categoryAdapter = CategoryAdapter()
 
