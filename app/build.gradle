@@ -69,6 +69,6 @@ dependencies {
 
     compile 'com.squareup.picasso:picasso:2.5.2'
 
-    compile 'com.teslacode.viper:viper:0.4.0'
+    compile 'com.teslacode.viper:viper:0.4.1'
     compile 'com.teslacode.service:service:0.1.1'
 }

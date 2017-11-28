@@ -31,6 +31,8 @@ class RandomInteractor : FragmentInteractor<RandomContract.InteractorOutput>(), 
     override fun onViewCreated() {
         super.onViewCreated()
 
+        output?.hideProgress()
+
         if (joke == null) {
             onRandom()
         } else {

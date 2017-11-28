@@ -15,6 +15,10 @@ interface RandomContract {
         fun showJoke(joke: Joke)
 
         fun showError(message: String)
+
+        fun showProgress()
+
+        fun hideProgress()
     }
 
     interface Presenter : FragmentContract.Presenter {
@@ -24,8 +28,6 @@ interface RandomContract {
         fun setCategory(category: String)
 
         fun onShare()
-
-        fun showAbout()
     }
 
     interface Interactor : FragmentContract.Interactor {
@@ -55,11 +57,5 @@ interface RandomContract {
     interface Router : Contract.Router {
 
         fun share(text: String)
-
-        fun showAbout()
-
-        fun showProgress()
-
-        fun hideProgress()
     }
 }

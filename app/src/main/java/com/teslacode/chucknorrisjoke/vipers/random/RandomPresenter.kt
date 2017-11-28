@@ -29,15 +29,11 @@ class RandomPresenter(view: ViewBehavior, interactor: Interactor, router: Router
     }
 
     override fun showProgress() {
-        router?.showProgress()
+        view?.showProgress()
     }
 
     override fun hideProgress() {
-        router?.hideProgress()
-    }
-
-    override fun showAbout() {
-        router?.showAbout()
+        view?.hideProgress()
     }
 
     override fun showError(message: String) {
