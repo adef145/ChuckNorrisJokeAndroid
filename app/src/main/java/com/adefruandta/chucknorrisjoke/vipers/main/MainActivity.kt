@@ -2,6 +2,7 @@ package com.adefruandta.chucknorrisjoke.vipers.main
 
 import android.os.Bundle
 import android.support.design.widget.NavigationView
+import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -15,7 +16,7 @@ import com.adefruandta.viper.activities.ViperDrawerActivity
  * Created by adefruandta on 11/22/17.
  */
 
-class MainActivity : ViperDrawerActivity<RandomFragment, MainContract.Presenter>(), ViewBehavior {
+class MainActivity : ViperDrawerActivity<MainContract.Presenter>(), ViewBehavior {
 
     // region Attributes
 
@@ -25,7 +26,7 @@ class MainActivity : ViperDrawerActivity<RandomFragment, MainContract.Presenter>
 
     // region ViperDrawerActivity
 
-    override fun onCreateFragment(savedInstanceState: Bundle?): RandomFragment? {
+    override fun onCreateFragment(savedInstanceState: Bundle?): Fragment? {
         return RandomFragment()
     }
 
@@ -43,7 +44,7 @@ class MainActivity : ViperDrawerActivity<RandomFragment, MainContract.Presenter>
     // region View Behavior
 
     override fun setCategory(category: String) {
-        fragment?.setCategory(category)
+        (fragment as RandomFragment)?.setCategory(category)
     }
 
     override fun setAdapter(categoryAdapter: CategoryAdapter) {
