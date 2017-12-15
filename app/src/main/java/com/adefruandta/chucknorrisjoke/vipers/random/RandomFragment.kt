@@ -21,7 +21,7 @@ class RandomFragment : ViperFragment<Presenter>(), ViewBehavior {
 
     // region Attributes
 
-    override var layoutResId: Int = R.layout.fragment_random
+    override var layoutResId: Int? = R.layout.fragment_random
 
     // endregion
 

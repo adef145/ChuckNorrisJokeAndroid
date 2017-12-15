@@ -3,14 +3,13 @@ package com.adefruandta.chucknorrisjoke.vipers.main
 import android.os.Bundle
 import com.adefruandta.chucknorrisjoke.adapters.category.CategoryAdapter
 import com.adefruandta.chucknorrisjoke.vipers.main.MainContract.*
-import com.adefruandta.viper.contracts.ViperContract
-import com.adefruandta.viper.presenters.ViperDrawerActivityPresenter
+import com.adefruandta.viper.presenters.ViperPresenter
 
 /**
  * Created by adefruandta on 11/22/17.
  */
 
-class MainPresenter(view: ViewBehavior, interactor: Interactor) : ViperDrawerActivityPresenter<ViewBehavior, Interactor, ViperContract.Router>(view, interactor), Presenter, InteractorOutput {
+class MainPresenter(view: ViewBehavior, interactor: Interactor) : ViperPresenter<ViewBehavior, Interactor, Router>(view, interactor), Presenter, InteractorOutput {
 
     private val categoryAdapter = CategoryAdapter()
 

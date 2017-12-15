@@ -69,6 +69,6 @@ dependencies {
 
     compile 'com.squareup.picasso:picasso:2.5.2'
 
-    compile 'com.adefruandta.viper:viper:0.2.0'
+    compile 'com.adefruandta.viper:viper:0.3.0'
     compile 'com.adefruandta.service:service:0.3.0'
 }

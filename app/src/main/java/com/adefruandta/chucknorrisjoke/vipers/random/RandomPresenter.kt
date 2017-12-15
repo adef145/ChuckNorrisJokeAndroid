@@ -4,13 +4,13 @@ import android.text.TextUtils
 import com.adefruandta.chucknorrisjoke.R
 import com.adefruandta.chucknorrisjoke.models.Joke
 import com.adefruandta.chucknorrisjoke.vipers.random.RandomContract.*
-import com.adefruandta.viper.presenters.ViperFragmentPresenter
+import com.adefruandta.viper.presenters.ViperPresenter
 
 /**
  * Created by adefruandta on 11/14/17.
  */
 
-class RandomPresenter(view: ViewBehavior, interactor: Interactor, router: Router) : ViperFragmentPresenter<ViewBehavior, Interactor, Router>(view, interactor, router), Presenter, InteractorOutput {
+class RandomPresenter(view: ViewBehavior, interactor: Interactor, router: Router) : ViperPresenter<ViewBehavior, Interactor, Router>(view, interactor, router), Presenter, InteractorOutput {
 
     // region Presenter
 

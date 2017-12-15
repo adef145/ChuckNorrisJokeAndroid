@@ -16,7 +16,7 @@ interface MainContract {
         fun setCategory(category: String)
     }
 
-    interface Presenter : ViperDrawerActivityContract.Presenter
+    interface Presenter : ViperDrawerActivityContract.Presenter<ViewBehavior, Interactor, Router>
 
     interface Interactor : ViperDrawerActivityContract.Interactor
 
@@ -24,4 +24,6 @@ interface MainContract {
 
         fun setCategories(categories: List<String>)
     }
+
+    interface Router : ViperDrawerActivityContract.Router
 }

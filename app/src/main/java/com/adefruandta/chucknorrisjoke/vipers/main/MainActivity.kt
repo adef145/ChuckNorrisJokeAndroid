@@ -32,7 +32,7 @@ class MainActivity : ViperDrawerActivity<MainContract.Presenter>(), ViewBehavior
 
     override fun onCreateDrawerMenu(inflater: LayoutInflater?, navigationView: NavigationView) {
         val view = inflater!!.inflate(R.layout.widget_drawer_menu, navigationView, true)
-        drawerMenu = view.findViewById(R.id.drawerMenu)
+        drawerMenu = view?.findViewById(R.id.drawerMenu)
     }
 
     override fun onCreatePresenter(savedInstanceState: Bundle?): MainContract.Presenter? {
@@ -44,7 +44,7 @@ class MainActivity : ViperDrawerActivity<MainContract.Presenter>(), ViewBehavior
     // region View Behavior
 
     override fun setCategory(category: String) {
-        (fragment as RandomFragment)?.setCategory(category)
+        (fragment as RandomFragment).setCategory(category)
     }
 
     override fun setAdapter(categoryAdapter: CategoryAdapter) {

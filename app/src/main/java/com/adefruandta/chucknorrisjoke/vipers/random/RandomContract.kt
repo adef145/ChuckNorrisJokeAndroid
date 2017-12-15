@@ -21,7 +21,7 @@ interface RandomContract {
         fun hideProgress()
     }
 
-    interface Presenter : ViperFragmentContract.Presenter {
+    interface Presenter : ViperFragmentContract.Presenter<ViewBehavior, Interactor, Router> {
 
         fun onRandom()
 

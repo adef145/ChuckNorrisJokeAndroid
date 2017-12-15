@@ -4,13 +4,13 @@ import android.os.Bundle
 import com.adefruandta.chucknorrisjoke.models.Joke
 import com.adefruandta.chucknorrisjoke.services.repositories.JokeRepository
 import com.adefruandta.chucknorrisjoke.vipers.random.RandomContract.Interactor
-import com.adefruandta.viper.interactors.ViperFragmentInteractor
+import com.adefruandta.viper.interactors.ViperInteractor
 
 /**
  * Created by adefruandta on 11/14/17.
  */
 
-class RandomInteractor : ViperFragmentInteractor<RandomContract.InteractorOutput>(), Interactor {
+class RandomInteractor : ViperInteractor<RandomContract.InteractorOutput>(), Interactor {
 
     companion object {
         private val JOKE_EXTRAS = "JOKE_EXTRAS"
